@@ -1,0 +1,23 @@
+name: tinder_py37
+channels:
+- defaults
+dependencies:
+- python=3.7
+- pip>19.0
+- certifi
+- setuptools
+- vc
+- vs2015_runtime
+- wheel
+- wincertstore
+- pip:
+  - bokeh
+  - plotly
+  - keras
+  - gensim
+  - nltk
+  - spacy
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
