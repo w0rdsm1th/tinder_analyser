@@ -9,13 +9,19 @@ import bokeh.plotting as bk_plotting
 import bokeh.io as bk_io
 
 import util
-import sankey
+from sankey import Sankey
+
+
+test_data = bk_models.ColumnDataSource({
+    "source": ["Barry", "Frodo", "Frodo", "Barry", "Elvis", "Elvis", "Sarah", ],
+    "target": ["Elvis", "Elvis", "Sarah", "Alice", "Sarah", "Alice", "Alice", ],
+    "amount": [2, 2, 2, 2, 2, 2, 4],
+})
 
 doc = bk_plotting.curdoc()
 
-sample_data = pd.read_csv(util.relative_file_read(__file__, ["scratch", "sankey_csv_blocks", "sankey.csv"]))
-cds = bk_models.ColumnDataSource(sample_data)
-out_sankey = sankey.Sankey(data_source=cds)
 
-doc.add_root(out_sankey)
+sankey_out = Sankey(source=test_data)
+
+doc.add_root(sankey_out)
 doc.title = "sankey attempt"
